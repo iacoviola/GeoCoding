@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GeoCoding</string>
+    <string name="insert">Inserisci località</string>
+    <string name="get">Query server</string>
+    <string name="lat">Latitude:</string>
+    <string name="lng">Longitude:</string>
+    <string name="elv">Elevation:</string>
+    <string name="measunit">m.a.s.l.</string>
+</resources>
