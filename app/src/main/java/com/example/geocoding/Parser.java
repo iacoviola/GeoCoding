@@ -52,7 +52,7 @@ public class Parser {
             DocumentBuilder builder;
             Document document;
             Element root;
-            Node lat, lng, latSW, lngSW, latNE, lngNE;
+            Node lat, lng, latSW, lngSW, latNE, lngNE, name;
 
             factory = DocumentBuilderFactory.newInstance();
             builder = factory.newDocumentBuilder();
@@ -61,6 +61,7 @@ public class Parser {
 
             if(root.getElementsByTagName("status").item(0).getTextContent().equals("OK")) {
 
+                name = root.getElementsByTagName("long_name").item(0);
                 lat = root.getElementsByTagName("lat").item(0);
                 lng = root.getElementsByTagName("lng").item(0);
 
@@ -72,7 +73,7 @@ public class Parser {
                 Log.d("Loc1", latSW.getTextContent());
                 Log.d("Loc2", latNE.getTextContent());
 
-                return new Place(Double.parseDouble(lat.getTextContent()), Double.parseDouble(lng.getTextContent()),
+                return new Place(name.getTextContent(), Double.parseDouble(lat.getTextContent()), Double.parseDouble(lng.getTextContent()),
                         new PlaceSWNE(Double.parseDouble(latSW.getTextContent()), Double.parseDouble(lngSW.getTextContent()), Double.parseDouble(latNE.getTextContent()), Double.parseDouble(lngNE.getTextContent())));
             } else return null;
 

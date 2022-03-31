@@ -2,15 +2,21 @@ package com.example.geocoding;
 
 public class Place {
 
+    private String name;
     private double lat;
     private double lng;
     private double elv;
     private PlaceSWNE bounds;
 
-    Place (double lat, double lng, PlaceSWNE plc){
+    Place (String name, double lat, double lng, PlaceSWNE plc){
+        this.name = name;
         this.lat = lat;
         this.lng = lng;
         bounds = plc;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public double getLat(){

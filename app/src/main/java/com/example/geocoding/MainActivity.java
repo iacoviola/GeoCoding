@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String t = text.getText().toString();
                 TextView tview = findViewById(R.id.location);
                 tview.setVisibility(View.VISIBLE);
-                tview.setText(t);
                 text.setText(null);
 
                 new Thread(new Runnable() {
@@ -78,7 +77,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                                     m.remove();
                                 gmap.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds( new LatLng(plc.getBounds().getLatSW(), plc.getBounds().getLngSW()),
                                                                                     new LatLng(plc.getBounds().getLatNE(), plc.getBounds().getLngNE())), 10));
-                                m = gmap.addMarker(new MarkerOptions().position(new LatLng(plc.getLat(), plc.getLng())).title(t));
+                                m = gmap.addMarker(new MarkerOptions().position(new LatLng(plc.getLat(), plc.getLng())).title(plc.getName()));
+                                tview.setText(plc.getName());
                                 lat.setText(String.format(Locale.ENGLISH, "%f", plc.getLat()));
                                 lng.setText(String.format(Locale.ENGLISH, "%f", plc.getLng()));
                                 elv.setText(String.format(Locale.ENGLISH,"%.2f", plc.getElv()));
